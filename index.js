@@ -23,6 +23,8 @@ app.get('/results',function(req,res){
 	var results2 = fetch('https://api.github.com/users/github')
 		.then(function(res){
 			return res.json();
+		}).then(function(json){
+			return json;
 		})
 	res.send(results2)
 });
