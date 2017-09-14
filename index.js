@@ -8,10 +8,8 @@ app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
   fetch('https://api.github.com/users/github')
-	  .then(function(ress){
-	  	return ress.json();
-	  }).then(function(json){
-	  	info = json;
+	  .then(function(res){
+	  	info = res.json();
 	  })
 });
 
@@ -33,7 +31,8 @@ app.get('/results',function(req,res){
 app.get('/resultsJSON',function(req,res){
 	res.send(info)
 })
-
+/*
 app.listen(5000, function () {
   console.log('Example app listening on port 5000!')
 });
+*/
