@@ -10,7 +10,7 @@ app.listen(app.get('port'), function() {
 });
 
 app.get('/', function (req, res) {
-  res.send('Hello World2!')
+  res.send('Hello World!')
 });
 app.get('/test/:inputStuff', function (req, res) {
   res.send(req.params.inputStuff)
@@ -22,26 +22,9 @@ app.get('/results',function(req,res){
 	})
 	var results2 = fetch('https://api.github.com/users/github')
 		.then(function(res){
-			return res;
+			return res.json();
 		})
-	/*.then(function(json){
-			return json;
-		})*/
 	res.send(results2)
-});
-app.get('/resultsJSON',function(req,res){
-    var results = fetch('https://api.datausa.io/api/?show=geo&sumlevel=nation&year=latest')
-        .then(function(res){
-            return res;
-        })
-    var results2 = fetch('https://api.github.com/users/github')
-        .then(function(res){
-            return res.json();
-        })
-    /*.then(function(json){
-            return json;
-        })*/
-    res.send(results2)
 });
 
 app.listen(5000, function () {
