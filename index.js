@@ -24,8 +24,9 @@ app.get('/results',function(req,res){
 		.then(function(res){
 			return res.json();
 		}).then(function(json){
-			res.send(json);
+			return json;
 		})
+    res.send(results2)
 });
 
 app.listen(5000, function () {
