@@ -9,10 +9,10 @@ app.listen(app.get('port'), function() {
 });
 
 app.get('/', function (req, res) {
-  res.send('Hello World!');
+  res.send('Hello World!')
 });
 app.get('/test/:text', function(req,res){
-	res.send(`You entered ${req.params.text}`);
+	res.send(`You entered ${req.params.text}`)
 };
 
 app.listen(5000, function () {
