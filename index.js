@@ -1,4 +1,5 @@
 var express = require('express');
+var fetch = require('node-fetch');
 var app = express();
 
 app.set('port', (process.env.PORT || 5000));
@@ -13,6 +14,13 @@ app.get('/', function (req, res) {
 });
 app.get('/test/:inputStuff', function (req, res) {
   res.send(req.params.inputStuff)
+});
+app.get('/results',function(req,res){
+	var results = fetch('https://api.datausa.io/api/?show=geo&sumlevel=nation&year=latest)')
+	.then(function(res){
+		return res.json();
+	})
+	res.send(results)
 });
 
 app.listen(5000, function () {
