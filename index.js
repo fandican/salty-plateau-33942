@@ -18,7 +18,7 @@ app.get('/test/:inputStuff', function (req, res) {
 app.get('/results',function(req,res){
 	var results = fetch('https://api.datausa.io/api/?show=geo&sumlevel=nation&year=latest)')
 	.then(function(res){
-		return res.json();
+		return res;
 	})
 	res.send(results)
 });
