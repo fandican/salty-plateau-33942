@@ -2,7 +2,7 @@ var express = require('express');
 var fetch = require('node-fetch');
 var app = express();
 var info;
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT));
 
 
 app.listen(app.get('port'), function() {
@@ -32,8 +32,3 @@ app.get('/results',function(req,res){
 app.get('/resultsJSON',function(req,res){
 	res.send(info)
 })
-/*
-app.listen(5000, function () {
-  console.log('Example app listening on port 5000!')
-});
-*/
