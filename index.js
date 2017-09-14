@@ -12,7 +12,7 @@ app.get('/', function (req, res) {
   res.send('Hello World!')
 });
 app.get('/test/:inputStuff', function (req, res) {
-  res.send(req.params)
+  res.send(req.params.inputStuff)
 });
 
 app.listen(5000, function () {
