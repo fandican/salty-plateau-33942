@@ -1,7 +1,7 @@
 var express = require('express');
 var fetch = require('node-fetch');
 var app = express();
-
+var info;
 app.set('port', (process.env.PORT || 5000));
 
 
@@ -21,12 +21,11 @@ app.get('/results',function(req,res){
 		return res;
 	})
 	var results2 = fetch('https://api.github.com/users/github')
-	/*	.then(function(res){
-			return res.json();
+		.then(function(ress){
+			return ress.json();
 		}).then(function(json){
-			return json;
-		})*/
-    res.send(results2)
+			res.send(json);
+		})
 });
 
 app.listen(5000, function () {
