@@ -7,6 +7,12 @@ app.set('port', (process.env.PORT || 5000));
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
+  fetch('https://api.github.com/users/github')
+	  .then(function(ress){
+	  	return ress.json();
+	  }).then(function(json){
+	  	info = json;
+	  })
 });
 
 app.get('/', function (req, res) {
@@ -16,10 +22,6 @@ app.get('/test/:inputStuff', function (req, res) {
   res.send(req.params.inputStuff)
 });
 app.get('/results',function(req,res){
-	var results = fetch('https://api.datausa.io/api/?show=geo&sumlevel=nation&year=latest')
-	.then(function(res){
-		return res;
-	})
 	var results2 = fetch('https://api.github.com/users/github')
 		.then(function(ress){
 			return ress.json();
