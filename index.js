@@ -20,7 +20,12 @@ app.get('/results',function(req,res){
 	.then(function(res){
 		return res;
 	})
-	res.send(results)
+	fetch('https://api.github.com/users/github')
+		.then(function(res){
+			return res.json();
+		}).then(function(json){
+			res.send(json);
+		})
 });
 
 app.listen(5000, function () {
