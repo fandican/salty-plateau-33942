@@ -7,7 +7,7 @@ app.set('port', (process.env.PORT || 5000));
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
-  fetch('https://api.github.com/users/github')
+  fetch('https://api.datausa.io/api/?show=geo&sumlevel=nation&year=latest')
 	  .then(function(res){
 	  	return res.json();
 	  }).then(function(json){
