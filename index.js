@@ -9,7 +9,9 @@ app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
   fetch('https://api.github.com/users/github')
 	  .then(function(res){
-	  	info = res.json();
+	  	return res.json();
+	  }).then(function(json){
+	  	info = json;
 	  })
 });
 
@@ -24,7 +26,6 @@ app.get('/results',function(req,res){
 		.then(function(ress){
 			return ress.json();
 		}).then(function(json){
-			info = json;
 			res.send(json);
 		})
 });
