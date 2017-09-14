@@ -24,9 +24,13 @@ app.get('/results',function(req,res){
 		.then(function(ress){
 			return ress.json();
 		}).then(function(json){
+			info = json;
 			res.send(json);
 		})
 });
+app.get('/resultsJSON',function(req,res){
+	res.send(info)
+})
 
 app.listen(5000, function () {
   console.log('Example app listening on port 5000!')
