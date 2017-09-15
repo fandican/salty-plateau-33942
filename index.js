@@ -39,6 +39,7 @@ class CIPRecords{
         this.year = data.get("year");
         this.grads_rank = data.get("grads_rank");
         this.cip = data.get("cip");
+        this.name = data.get("name");
     }
 
 }
@@ -47,22 +48,22 @@ class CIPRecordBook{
     constructor(headers){
         this.book = new Map();
         this.recordHeaders = headers;
+        this.recordsAdded = 0;
     }
     add(ciprecord){
-        if(this.book.has(ciprecord.cip) == false)
-        	//console.log('New record');
-            this.book.set(ciprecord.cip,ciprecord);
+        this.book.set(this.newkey,ciprecord);
+        this.recordsAdded += 1;
     }
-    update(ciprecord){
-        if(this.book.has(ciprecord.cip))
-            this.book.set(ciprecord.cip,ciprecord);
+    update(index,ciprecord){
+        if(this.book.has(index))
+            this.book.set(index,ciprecord);
     }
-    remove(cip){
-        if(this.book.has(cip))
-            this.book.delete(cip)
+    remove(index){
+        if(this.book.has(index))
+            this.book.delete(index)
     }
-    getCIPRecord(cip){
-        return this.book.get(cip)
+    getCIPRecord(index){
+        return this.book.get(index)
     }
 }
 
@@ -93,7 +94,7 @@ fetch('https://api.datausa.io/api/?show=cip&sumlevel=all')
 				cipRecordInfo.set(cipHeader[j],i[j]);
 				if(cipHeader[j] === 'cip'){
 					//console.log(i[j]);
-					cipRecordInfo.set(cipHeader[j],idToName.get(i[j]));
+					cipRecordInfo.set('name',idToName.get(i[j]));
 				}
 			}
 			//console.log(cipRecordInfo);
