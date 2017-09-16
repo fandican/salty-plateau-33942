@@ -67,6 +67,7 @@ class CIPRecordBook{
     }
 }
 
+app.set('port', (process.env.PORT | 5000));
 fetch('https://api.datausa.io/api/?show=cip&sumlevel=all')
     .then(function(res){
         return res.json();
@@ -109,7 +110,6 @@ fetch('https://api.datausa.io/api/?show=cip&sumlevel=all')
 	});
 
 });
-app.set('port', (process.env.PORT | 5000));
 
 
 app.listen(app.get('port'), function() {
