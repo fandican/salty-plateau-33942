@@ -1,40 +1,10 @@
 var express = require('express');
-var app = express();
-
-app.set('port', (process.env.PORT || 5000));
-
-
-app.listen(app.get('port'), function() {
-    console.log('Node app is running on port', app.get('port'));
-});
-
-app.get('/', function (req, res) {
-    res.send('Hello World!')
-});
-
-app.listen(5000, function () {
-    console.log('Example app listening on port 5000!')
-});
-/*var express = require('express');
-var app     = express();
-
-app.set('port', (process.env.PORT || 5000));
-
-//For avoidong Heroku $PORT error
-app.get('/', function(request, response) {
-    var result = 'App is running'
-    response.send(result);
-}).listen(app.get('port'), function() {
-    console.log('App is running, server is listening on port ', app.get('port'));
-});*/
-/*
-var express = require('express');
 var fetch = require('node-fetch');
 var app = express();
 var records;
 var cipID;
 var recordBook
-app.set('port', (process.env.PORT | 5000));
+app.set('port', (process.env.PORT || 5000));
 
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
@@ -44,7 +14,6 @@ app.listen(app.get('port'), function() {
 app.get('/', function (req, res) {
     res.send('Hello World!');
 });
-*/
 /*
 class CIPRecords{
     constructor(data){
