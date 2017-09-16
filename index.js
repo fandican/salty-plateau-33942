@@ -48,11 +48,11 @@ class CIPRecordBook{
     constructor(headers){
         this.book = new Map();
         this.recordHeaders = headers;
-        this.recordsAdded = 0;
+        this.newkey = 0;
     }
     add(ciprecord){
         this.book.set(this.newkey,ciprecord);
-        this.recordsAdded += 1;
+        this.newkey += 1;
     }
     update(index,ciprecord){
         if(this.book.has(index))
@@ -67,7 +67,7 @@ class CIPRecordBook{
     }
 }
 
-app.set('port', (process.env.PORT | 5000));
+/*
 fetch('https://api.datausa.io/api/?show=cip&sumlevel=all')
     .then(function(res){
         return res.json();
@@ -110,6 +110,10 @@ fetch('https://api.datausa.io/api/?show=cip&sumlevel=all')
 	});
 
 });
+*/
+app.set('port', (process.env.PORT | 5000));
+
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
@@ -117,7 +121,17 @@ app.listen(app.get('port'), function() {
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
-app.get('/test/:inputStuff/:asf?/:were?', function (req, res) {
-    res.send(req.params.inputStuff + ' '+req.params.asf + ' '+req.params.were);
-
+app.get('/test/:inputStuff', function (req, res) {
+  res.send(req.params.inputStuff);
 });
+
+app.get('/records',function(req,res){
+	res.send(records);
+});
+app.get('/cipID',function(req,res){
+    res.send(cipID);
+});
+app.get('/recordbook',function(req,res){
+	console.log(recordBook);
+	res.send(recordBook);
+})
