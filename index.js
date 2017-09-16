@@ -14,7 +14,7 @@ app.listen(app.get('port'), function() {
 app.get('/', function (req, res) {
     res.send('Hello World!');
 });
-/*
+
 class CIPRecords{
     constructor(data){
         this.grads_total = data.get("grads_total");
@@ -77,8 +77,6 @@ class CIPRecordBook{
         return this.book.get(index)
     }
 }
-*/
-/*
 fetch('https://api.datausa.io/api/?show=cip&sumlevel=all')
     .then(function(res){
         return res.json();
@@ -121,9 +119,6 @@ fetch('https://api.datausa.io/api/?show=cip&sumlevel=all')
 	});
 
 });
-*/
-
-/*
 
 app.get('/test/:inputStuff', function (req, res) {
   res.send(req.params.inputStuff);
@@ -139,4 +134,3 @@ app.get('/recordbook',function(req,res){
 	console.log(recordBook);
 	res.send(recordBook);
 });
-*/
