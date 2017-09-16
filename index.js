@@ -124,8 +124,8 @@ app.get('/test/:inputStuff/:asf?/:were?', function (req, res) {
 
 });
 app.get('/ratio/:ethnicity/:year?/:cip?',function(req,res) {
-    
-}
+    res.send('stuff');
+};
 app.get('/records',function(req,res){
 	res.send(records);
 });
