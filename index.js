@@ -119,10 +119,13 @@ app.listen(app.get('port'), function() {
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
-app.get('/test/:inputStuff', function (req, res) {
-  res.send(req.params.inputStuff);
-});
+app.get('/test/:inputStuff/:asf?/:were?', function (req, res) {
+    res.send(req.params.inputStuff + ' '+req.params.asf + ' '+req.params.were);
 
+});
+app.get('/ratio/:ethnicity/:year?/:cip?',function(req,res) {
+    
+}
 app.get('/records',function(req,res){
 	res.send(records);
 });
@@ -132,4 +135,13 @@ app.get('/cipID',function(req,res){
 app.get('/recordbook',function(req,res){
 	console.log(recordBook);
 	res.send(recordBook);
-})
+});
+app.delete('/user/:user', function (req, res) {
+    res.send('Got a DELETE request at /user')
+});
+app.put('/user', function (req, res) {
+    res.send('Got a PUT request at /user')
+});
+app.get('/user', function (req, res) {
+    res.send('Hello World!')
+});
