@@ -120,8 +120,6 @@ app.listen(app.get('port'), function() {
 
 app.get('/', function (req, res) {
   res.send('Hello World!');
-}).listen(app.get('port'), function() {
-    console.log('App is running, server is listening on port ', app.get('port'));
 });
 app.get('/test/:inputStuff', function (req, res) {
   res.send(req.params.inputStuff);
