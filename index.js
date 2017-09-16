@@ -1,10 +1,12 @@
 var express = require('express');
 var fetch = require('node-fetch');
+var bodyParser = require('body-parser');
 var app = express();
 var records;
 var cipID;
 var recordBook
 app.set('port', (process.env.PORT || 5000));
+app.use(bodyParser.json());
 
 app.listen(app.get('port'), function() {
     console.log('Node app is running on port', app.get('port'));
@@ -119,7 +121,7 @@ fetch('https://api.datausa.io/api/?show=cip&sumlevel=all')
 	});
 
 });
-
+//======================================================
 app.get('/test/:inputStuff', function (req, res) {
   res.send(req.params.inputStuff);
 });
@@ -133,4 +135,13 @@ app.get('/cipID',function(req,res){
 app.get('/recordbook',function(req,res){
 	console.log(recordBook);
 	res.send(recordBook);
+});
+//=========================================================
+app.get('/record/:recordID',function(req,res){
+    res.send(recordBook.getCIPRecord(parseInt(req.params.recordID)));
+});
+app.post('/record/',function(req,res){
+    console.log(req.body);
+    recordBook.add(req.body);
+    res.send(req.body);
 });
