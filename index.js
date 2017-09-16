@@ -3,7 +3,18 @@ var fetch = require('node-fetch');
 var app = express();
 var records;
 var cipID;
-var recordBook;
+var recordBook
+app.set('port', (process.env.PORT | 5000));
+
+app.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
+
+});
+
+app.get('/', function (req, res) {
+    res.send('Hello World!');
+});
+/*
 class CIPRecords{
     constructor(data){
         this.grads_total = data.get("grads_total");
@@ -66,7 +77,7 @@ class CIPRecordBook{
         return this.book.get(index)
     }
 }
-
+*/
 /*
 fetch('https://api.datausa.io/api/?show=cip&sumlevel=all')
     .then(function(res){
@@ -111,16 +122,9 @@ fetch('https://api.datausa.io/api/?show=cip&sumlevel=all')
 
 });
 */
-app.set('port', (process.env.PORT | 5000));
 
-
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
 /*
-app.get('/', function (req, res) {
-  res.send('Hello World!');
-});
+
 app.get('/test/:inputStuff', function (req, res) {
   res.send(req.params.inputStuff);
 });
