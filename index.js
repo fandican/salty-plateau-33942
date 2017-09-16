@@ -110,8 +110,6 @@ fetch('https://api.datausa.io/api/?show=cip&sumlevel=all')
 	});
 
 });
-
-
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
@@ -122,26 +120,4 @@ app.get('/', function (req, res) {
 app.get('/test/:inputStuff/:asf?/:were?', function (req, res) {
     res.send(req.params.inputStuff + ' '+req.params.asf + ' '+req.params.were);
 
-});
-app.get('/ratio/:ethnicity/:year?/:cip?',function(req,res) {
-    res.send('stuff');
-});
-app.get('/records',function(req,res){
-	res.send(records);
-});
-app.get('/cipID',function(req,res){
-    res.send(cipID);
-});
-app.get('/recordbook',function(req,res){
-	console.log(recordBook);
-	res.send(recordBook);
-});
-app.delete('/user/:user', function (req, res) {
-    res.send('Got a DELETE request at /user')
-});
-app.put('/user', function (req, res) {
-    res.send('Got a PUT request at /user')
-});
-app.get('/user', function (req, res) {
-    res.send('Hello World!')
 });
