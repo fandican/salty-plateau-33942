@@ -146,10 +146,10 @@ app.post('/record/',function(req,res){
     recordBook.add(req.body);
     res.send(req.body);
 });
-app.get('/grandrank/:recordID',function(req,res){
+app.get('/gradrank/:recordID',function(req,res){
     let rec = recordBook.getCIPRecord(parseInt(req.params.recordID));
     //console.log('rec:' + rec.grads_rank);
-    res.send('Grads rank is ' + rec.grads_rank + ' for record: ' + req.params.recordID);
+    res.send('Grad rank is ' + rec.grads_rank + ' for record: ' + req.params.recordID);
 });
 app.get('/year/:recordID',function(req,res){
     let rec = recordBook.getCIPRecord(parseInt(req.params.recordID));
