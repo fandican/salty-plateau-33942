@@ -14,7 +14,7 @@ app.listen(app.get('port'), function() {
 });
 
 app.get('/', function (req, res) {
-    res.send('Hello World Again!');
+    res.send('Hello World Again3!');
 });
 
 class CIPRecords{
@@ -78,6 +78,7 @@ class CIPRecordBook{
     getCIPRecord(index){
         return this.book.get(index)
     }
+
 }
 fetch('https://api.datausa.io/api/?show=cip&sumlevel=all')
     .then(function(res){
@@ -144,4 +145,25 @@ app.post('/record/',function(req,res){
     console.log(req.body);
     recordBook.add(req.body);
     res.send(req.body);
+});
+app.get('/grandrank/:recordID',function(req,res){
+    let rec = recordBook.getCIPRecord(parseInt(req.params.recordID));
+    //console.log('rec:' + rec.grads_rank);
+    res.send('Grads rank is ' + rec.grads_rank + ' for record: ' + req.params.recordID);
+});
+app.get('/year/:recordID',function(req,res){
+    let rec = recordBook.getCIPRecord(parseInt(req.params.recordID));
+    //console.log('rec:' + rec.grads_rank);
+    res.send('Year is ' + rec.year + ' for record: ' + req.params.recordID);
+});
+app.post('/yearUpdate/:recordID',function(req,res){
+    console.log(req.body);
+    recordBook.update(req.params.recordID,req.body);
+    //update(index,ciprecord)
+    res.send(req.body);
+});
+app.get('/musicteachers/:kind',function(req,res){
+    let rec = recordBook.getCIPRecord(parseInt(req.params.recordID));
+    console.log('rec:' + rec.grads_rank);
+    res.send('Grads rank is ' + rec.grads_rank + ' for record: ' + req.params.recordID);
 });
